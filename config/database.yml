@@ -84,3 +84,4 @@ production:
   database: interview_buddy_be_production
   username: interview_buddy_be
   password: <%= ENV["INTERVIEW_BUDDY_BE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
