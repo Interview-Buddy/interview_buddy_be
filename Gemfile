@@ -68,3 +68,5 @@ end
 
 gem "graphql", "~> 2.0"
 gem "graphiql-rails", group: :development
+
+gem "dockerfile-rails", ">= 1.5", :group => :development

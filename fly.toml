@@ -1,0 +1,38 @@
+# fly.toml app configuration file generated for interviewbuddybe on 2023-07-19T16:12:57-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "interviewbuddybe"
+primary_region = "den"
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+console_command = "/rails/bin/rails console"
+
+[deploy]
+  release_command = "bin/rails fly:release"
+
+[env]
+  PORT = "8080"
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 3000
+  processes = ["app"]
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 25
+    soft_limit = 20
+
+[[statics]]
+  guest_path = "/app/public"
+  url_prefix = "/"
