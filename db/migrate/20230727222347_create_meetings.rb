@@ -3,9 +3,9 @@ class CreateMeetings < ActiveRecord::Migration[7.0]
     create_table :meetings do |t|
       t.time :start_time
       t.time :end_time
-      t.string :interview_type
-      t.string :student
-      t.string :alum
+      t.integer :interview_type
+      t.integer :student_id
+      t.integer :alum_id
       t.date :date
 
       t.timestamps
