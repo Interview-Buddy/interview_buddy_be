@@ -3,12 +3,12 @@
 module Types
   class MeetingType < Types::BaseObject
     field :id, ID, null: false
-    # field :start_time, Types::TimeType, null: false
-    # field :end_time, Types::TimeType, null: false
-    field :interview_type, String, null: false
-    field :student, String, null: true
-    field :alum, String, null: false
-    field :date, GraphQL::Types::ISO8601Date, null: false
+    field :start_time, String
+    field :end_time, String
+    field :interview_type, Integer
+    field :student_id, Integer
+    field :alum_id, Integer
+    field :date, GraphQL::Types::ISO8601Date
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end

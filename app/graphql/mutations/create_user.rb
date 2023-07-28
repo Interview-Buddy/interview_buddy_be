@@ -4,7 +4,7 @@ module Mutations
     argument :last_name, String, required: true
     argument :email, String, required: true
     argument :password, String, required: true
-    argument :user_type, String, required: true
+    argument :user_type, Integer, required: true
 
     field :user, Types::UserType, null: false
     field :errors, [String], null: false
