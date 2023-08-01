@@ -11,7 +11,7 @@ module Mutations
     argument :last_name, String, required: false
     argument :email, String, required: false
     argument :password, String, required: false
-    argument :user_type, String, required: false
+    argument :user_type, Integer, required: false
 
     def resolve(id:, **args)
       user = ::User.find(id)

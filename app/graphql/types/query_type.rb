@@ -21,5 +21,11 @@ module Types
       User.find(id.to_i)
     end
 
+    field :meetings, [Types::MeetingType], null: false,
+      description: "Return all meetings"
+        def meetings
+          Meeting.all
+        end
+
   end
 end
