@@ -10,6 +10,7 @@ module Types
     field :password, String, null: false
     field :pronouns, String
     field :display_name, String
+    field :company, String
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end
