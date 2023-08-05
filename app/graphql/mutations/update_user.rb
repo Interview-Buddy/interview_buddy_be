@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class UserUpdate < BaseMutation
+  class UpdateUser < BaseMutation
     description "Updates a user by id"
 
     field :user, Types::UserType, null: false
@@ -12,6 +12,7 @@ module Mutations
     argument :email, String, required: false
     argument :password, String, required: false
     argument :user_type, Integer, required: false
+    argument :company, String, required: false
 
     def resolve(id:, **args)
       user = ::User.find(id)

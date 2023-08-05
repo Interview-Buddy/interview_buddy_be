@@ -1,5 +1,5 @@
 module Mutations
-  class UserDelete < BaseMutation
+  class DeleteUser < BaseMutation
     description "Deletes a user by ID"
 
     field :user, Types::UserType, null: false
