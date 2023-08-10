@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 RSpec.describe Mutations::CreateMeeting, type: :request do
   it 'can create a meeting' do
@@ -29,7 +28,6 @@ RSpec.describe Mutations::CreateMeeting, type: :request do
     }
     expect(response).to have_http_status(:success)
     data = JSON.parse(response.body)['data']['createMeeting']['meeting']
-    binding.pry
     expect(data['title']).to eq("Interview with Colin4Prez")
 
   end

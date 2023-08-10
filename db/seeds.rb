@@ -8,7 +8,7 @@
 User.destroy_all
 Meeting.destroy_all
 
-User.create!( first_name: "Colin", last_name: "Reinhart", email: "email@gmail.com", password: "password", user_type: "student")
-User.create!( first_name: "Joseph", last_name: "Downs", email: "test@gmail.com", password: "password", user_type: "alum", company: "AirBnb")
+colin = User.create!( first_name: "Colin", last_name: "Reinhart", email: "email@gmail.com", password: "password", user_type: "student")
+joseph = User.create!( first_name: "Joseph", last_name: "Downs", email: "test@gmail.com", password: "password", user_type: "alum", company: "AirBnb")
 
-Meeting.create!( start_time: "10", end_time: "11", interview_type: 0, date: "08/09/2023", user_id: 2 )
+Meeting.create!( start_time: "10", end_time: "11", interview_type: 0, date: "08/09/2023", user_id: joseph.id )
