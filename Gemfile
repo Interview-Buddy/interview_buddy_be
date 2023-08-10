@@ -54,6 +54,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'pry'
+  gem 'capybara'
+  gem 'net-http'
 end
 
 group :development do

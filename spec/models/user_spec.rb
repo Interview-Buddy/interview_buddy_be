@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'relationships' do
-    it { should have_many(:meetings).through(:user_meetings)}
+    it { should have_many(:meetings) }
   end
 
   describe 'validations' do

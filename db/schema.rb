@@ -10,43 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_04_151949) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_185131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "meetings", force: :cascade do |t|
     t.time "start_time"
     t.time "end_time"
+    t.date "date"
+    t.string "title"
     t.integer "interview_type"
     t.integer "student_id"
-    t.integer "alum_id"
-    t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_meetings", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "meeting_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["meeting_id"], name: "index_user_meetings_on_meeting_id"
-    t.index ["user_id"], name: "index_user_meetings_on_user_id"
+    t.index ["user_id"], name: "index_meetings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "display_name"
+    t.string "company"
     t.string "pronouns"
     t.string "email"
     t.string "password"
     t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "company"
   end
 
-  add_foreign_key "user_meetings", "meetings"
-  add_foreign_key "user_meetings", "users"
+  add_foreign_key "meetings", "users"
 end
