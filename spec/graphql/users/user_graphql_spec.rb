@@ -125,4 +125,30 @@ RSpec.describe Mutations::CreateUser, type: :request do
         expect(data[0]["firstName"]).to eq("Lloyd")
         expect(data[1]["firstName"]).to eq("Harry")
     end
+
+    it 'can get a user by id' do
+        user1 = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
+        user2 = User.create!(first_name: "Harry", last_name: "Dunne", email: "dumber@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Harry Dunne", company: "I Got Worms")
+
+        post '/graphql', params: {
+            query: <<-GRAPHQL
+                {
+	                user(id: #{user1.id}) {
+                        id
+                        firstName
+                        lastName
+                        email
+                        password
+                        userType
+                    }
+                }
+            GRAPHQL
+        }
+
+        expect(response).to have_http_status(:success)
+        json_response = JSON.parse(response.body)
+        data = json_response['data']['user']
+
+        expect(data['firstName']).to eq("Lloyd")
+    end
 end
