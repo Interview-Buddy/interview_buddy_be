@@ -75,4 +75,28 @@ RSpec.describe Mutations::CreateUser, type: :request do
 
         expect(data['firstName']).to eq("Floyd")
     end
+
+    it 'can delete a user' do
+        expect(User.count).to eq(0)
+        user = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
+        expect(User.count).to eq(1)
+
+        post '/graphql', params: {
+            query: <<-GRAPHQL
+            mutation {
+                deleteUser(input:{
+                    id: #{user.id}
+                 }) {
+                    user{
+                        firstName
+                        email
+                    }
+                }
+            }
+            GRAPHQL
+        }
+
+        expect(response).to have_http_status(:success)
+        expect(User.count).to eq(0)
+    end
 end
