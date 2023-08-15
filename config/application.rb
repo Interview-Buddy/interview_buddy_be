@@ -35,3 +35,10 @@ module InterviewBuddyBe
     config.generators.system_tests = nil
   end
 end
+
+config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', :headers => :any, :methods => [:get, :post, :options]
+  end
+end
