@@ -14,8 +14,8 @@ lucas = User.create!( first_name: "Lucas", last_name: "Merchant", email: "test23
 anthony = User.create!( first_name: "Anthony", last_name: "Shellman", email: "test24@gmail.com", password: "password", user_type: "student", pronouns: "he/him")
 
 
-Meeting.create!( start_time: "10", end_time: "11", interview_type: 0, date: "08/09/2023", user_id: joseph.id, student_id: colin.id )
-Meeting.create!( start_time: "10", end_time: "11", interview_type: 1, date: "08/10/2023", user_id: joseph.id )
-Meeting.create!( start_time: "10", end_time: "11", interview_type: 2, date: "08/11/2023", user_id: lucas.id )
-Meeting.create!( start_time: "12", end_time: "1", interview_type: 1, date: "08/11/2023", user_id: lucas.id )
-Meeting.create!( start_time: "10", end_time: "11", interview_type: 0, date: "08/12/2023", user_id: joseph.id, student_id: anthony.id )
+Meeting.create!( start_time: "10", end_time: "11", interview_type: 0, date: "08/09/2023", user_id: joseph.id, student_id: colin.id, title: "Interview with Joseph Downs and Colin Reinhart" )
+Meeting.create!( start_time: "10", end_time: "11", interview_type: 1, date: "08/10/2023", user_id: joseph.id, title: "Interview with Joseph Downs" )
+Meeting.create!( start_time: "10", end_time: "11", interview_type: 2, date: "08/11/2023", user_id: lucas.id, title: "Interview with Lucas Merchant" )
+Meeting.create!( start_time: "12", end_time: "1", interview_type: 1, date: "08/11/2023", user_id: lucas.id, title: "Interview with Lucas Merchant" )
+Meeting.create!( start_time: "10", end_time: "11", interview_type: 0, date: "08/12/2023", user_id: joseph.id, student_id: anthony.id, title: "Interview with Joseph Downs and Anthony Shellman" )
