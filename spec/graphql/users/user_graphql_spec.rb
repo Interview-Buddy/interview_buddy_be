@@ -151,4 +151,32 @@ RSpec.describe Mutations::CreateUser, type: :request do
 
         expect(data['firstName']).to eq("Lloyd")
     end
+
+    it 'can find user by company' do
+        user1 = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "Google")
+        user2 = User.create!(first_name: "Harry", last_name: "Dunne", email: "dumber@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Harry Dunne", company: "Nasa")
+
+        post '/graphql', params: {
+            query: <<-GRAPHQL
+                {
+	                userByCompany(company: "Google") {
+                        id
+                        firstName
+                        lastName
+                        email
+                        password
+                        userType
+                        company
+                    }
+                }
+            GRAPHQL
+        }
+
+        expect(response).to have_http_status(:success)
+
+        json_response = JSON.parse(response.body)
+        data = json_response['data']['userByCompany']
+
+        expect(data.count).to eq(1)
+    end
 end
