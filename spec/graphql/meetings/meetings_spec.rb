@@ -92,7 +92,6 @@ RSpec.describe Mutations::CreateMeeting, type: :request do
     }
     expect(response).to have_http_status(:success)
     data = JSON.parse(response.body)['data']['meetingByInterviewType']
-require 'pry'; binding.pry
 
     expect(data.count).to eq(5)
   end
