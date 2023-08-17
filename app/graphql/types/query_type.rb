@@ -43,5 +43,13 @@ module Types
       Meeting.where(interview_type: interview_type)
     end
 
+    field :user_by_company, [Types::UserType], null: false do
+      argument :company, String, required:true
+    end
+
+    def user_by_company(company:)
+      User.where(company: company)
+    end
+
   end
 end

@@ -159,7 +159,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
         post '/graphql', params: {
             query: <<-GRAPHQL
                 {
-	                userByCompany(company: #{user1.company}) {
+	                userByCompany(company: "Google") {
                         id
                         firstName
                         lastName
@@ -173,8 +173,9 @@ RSpec.describe Mutations::CreateUser, type: :request do
         }
 
         expect(response).to have_http_status(:success)
+
         json_response = JSON.parse(response.body)
-        data = json_response['data']['user']
+        data = json_response['data']['userByCompany']
 
         expect(data.count).to eq(1)
     end
