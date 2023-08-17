@@ -242,12 +242,12 @@ mutation {
 
 <br>
 
-<a id="delete-item">**deleteItem**</a><br>
-*Will delete an `item` in the database*
+<a id="delete-meeting">**deleteMeeting**</a><br>
+*Will delete an `meeting` in the database*
 * Example Mutation
 ```json
 mutation {
-  deleteItem(
+  deleteMeeting(
     input: {
       id: "11"
     }
