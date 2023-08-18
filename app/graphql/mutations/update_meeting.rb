@@ -7,7 +7,7 @@ module Mutations
     argument :id, ID, required: true
     argument :start_time, String, required: false
     argument :end_time, String, required: false
-    argument :alum_id, Integer, required: false
+    argument :user_id, Integer, required: false
     argument :date, String, required: false
     argument :student_id, Integer, required: false
     argument :interview_type, String, required: false
