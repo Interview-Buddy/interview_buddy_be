@@ -11,6 +11,7 @@ module Mutations
     argument :last_name, String, required: false
     argument :email, String, required: false
     argument :password, String, required: false
+    argument :pronouns, String, required: false
     argument :user_type, Integer, required: false
     argument :company, String, required: false
 
