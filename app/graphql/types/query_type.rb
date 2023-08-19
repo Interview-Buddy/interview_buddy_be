@@ -51,5 +51,13 @@ module Types
       User.where(company: company)
     end
 
+    field :meetings_by_date, [Types::MeetingType], null: false do
+      argument :date, String, required:true
+    end
+
+    def meetings_by_date(date:)
+      Meeting.where(date: date)
+    end
+
   end
 end
