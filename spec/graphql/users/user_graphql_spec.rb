@@ -8,17 +8,17 @@ RSpec.describe Mutations::CreateUser, type: :request do
         post '/graphql', params: {
             query: <<-GRAPHQL
             mutation {
-             createUser(
-                 input: {
-                    firstName: "Lloyd"
-                    lastName: "Christmas"
-                    email: "dumb@aol.com"
-                    uuid: "password"
-                    userType: 0
-                    pronouns: "he/him"
-                    displayName: "Lloyd Christmas"
-                    company: "I Got Worms"
-                  }
+                createUser(
+                    input: {
+                        firstName: "Lloyd"
+                        lastName: "Christmas"
+                        email: "dumb@aol.com"
+                        uuid: "password"
+                        userType: 0
+                        pronouns: "he/him"
+                        displayName: "Lloyd Christmas"
+                        company: "I Got Worms"
+                    }
                 ) {
                     user{
                         firstName
