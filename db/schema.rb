@@ -28,13 +28,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_185131) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "uuid"
     t.string "first_name"
     t.string "last_name"
     t.string "display_name"
     t.string "company"
     t.string "pronouns"
     t.string "email"
-    t.string "password"
     t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
