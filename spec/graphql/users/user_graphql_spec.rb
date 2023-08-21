@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'spec_helper'
+require 'pry'
 
 RSpec.describe Mutations::CreateUser, type: :request do
 
@@ -7,23 +8,23 @@ RSpec.describe Mutations::CreateUser, type: :request do
         post '/graphql', params: {
             query: <<-GRAPHQL
             mutation {
-             createUser(
-                 input: {
-                    firstName: "Lloyd"
-                    lastName: "Christmas"
-                    email: "dumb@aol.com"
-                    password: "password"
-                    userType: 0
-                    pronouns: "he/him"
-                    displayName: "Lloyd Christmas"
-                    company: "I Got Worms"
-                  }
+                createUser(
+                    input: {
+                        firstName: "Lloyd"
+                        lastName: "Christmas"
+                        email: "dumb@aol.com"
+                        uuid: "password"
+                        userType: 0
+                        pronouns: "he/him"
+                        displayName: "Lloyd Christmas"
+                        company: "I Got Worms"
+                    }
                 ) {
                     user{
                         firstName
                         lastName
                         email
-                        password
+                        uuid
                         userType
                         pronouns
                         displayName
@@ -41,7 +42,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
         expect(data['firstName']).to eq("Lloyd")
         expect(data['lastName']).to eq("Christmas")
         expect(data['email']).to eq("dumb@aol.com")
-        expect(data['password']).to eq("password")
+        expect(data['uuid']).to eq("password")
         expect(data['userType']).to eq("student")
         expect(data['pronouns']).to eq("he/him")
         expect(data['displayName']).to eq("Lloyd Christmas")
@@ -50,7 +51,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
 
     it 'can update user' do
         expect(User.count).to eq (0)
-        user = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
+        user = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", uuid: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
         expect(User.count).to eq(1)
 
         post '/graphql', params: {
@@ -78,7 +79,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
 
     it 'can delete a user' do
         expect(User.count).to eq(0)
-        user = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
+        user = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", uuid: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
         expect(User.count).to eq(1)
 
         post '/graphql', params: {
@@ -86,7 +87,7 @@ RSpec.describe Mutations::CreateUser, type: :request do
             mutation {
                 deleteUser(input:{
                     id: #{user.id}
-                 }) {
+                }) {
                     user{
                         firstName
                         email
@@ -101,18 +102,18 @@ RSpec.describe Mutations::CreateUser, type: :request do
     end
 
     it 'can get all users' do
-        user1 = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
-        user2 = User.create!(first_name: "Harry", last_name: "Dunne", email: "dumber@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Harry Dunne", company: "I Got Worms")
+        user1 = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", uuid: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
+        user2 = User.create!(first_name: "Harry", last_name: "Dunne", email: "dumber@aol.com", uuid: "password34", user_type: 0, pronouns: "he/him", display_name: "Harry Dunne", company: "I Got Worms")
 
-         post '/graphql', params: {
+        post '/graphql', params: {
             query: <<-GRAPHQL
                 {
                 users {
-                  id
-                  firstName
-                  email
+                id
+                firstName
+                email
                 }
-             }
+            }
             GRAPHQL
         }
 
@@ -126,20 +127,19 @@ RSpec.describe Mutations::CreateUser, type: :request do
         expect(data[1]["firstName"]).to eq("Harry")
     end
 
-    it 'can get a user by id' do
-        user1 = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
-        user2 = User.create!(first_name: "Harry", last_name: "Dunne", email: "dumber@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Harry Dunne", company: "I Got Worms")
+    it 'can get a user by uuid' do
+        user1 = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", uuid: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "I Got Worms")
+        user2 = User.create!(first_name: "Harry", last_name: "Dunne", email: "dumber@aol.com", uuid: "qweert", user_type: 0, pronouns: "he/him", display_name: "Harry Dunne", company: "I Got Worms")
 
         post '/graphql', params: {
             query: <<-GRAPHQL
                 {
-	                user(id: #{user1.id}) {
-                        id
-                        firstName
-                        lastName
-                        email
-                        password
-                        userType
+                    user(uuid: "#{user1.uuid}") {
+                    id
+                    firstName
+                    lastName
+                    email
+                    userType
                     }
                 }
             GRAPHQL
@@ -153,20 +153,19 @@ RSpec.describe Mutations::CreateUser, type: :request do
     end
 
     it 'can find user by company' do
-        user1 = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "Google")
-        user2 = User.create!(first_name: "Harry", last_name: "Dunne", email: "dumber@aol.com", password: "password", user_type: 0, pronouns: "he/him", display_name: "Harry Dunne", company: "Nasa")
+        user1 = User.create!(first_name: "Lloyd", last_name: "Christmas", email: "dumb@aol.com", uuid: "password", user_type: 0, pronouns: "he/him", display_name: "Lloyd Christmas", company: "Google")
+        user2 = User.create!(first_name: "Harry", last_name: "Dunne", email: "dumber@aol.com", uuid: "passwo1rd", user_type: 0, pronouns: "he/him", display_name: "Harry Dunne", company: "Nasa")
 
         post '/graphql', params: {
             query: <<-GRAPHQL
                 {
-	                userByCompany(company: "Google") {
-                        id
-                        firstName
-                        lastName
-                        email
-                        password
-                        userType
-                        company
+                    userByCompany(company: "Google") {
+                    id
+                    firstName
+                    lastName
+                    email
+                    userType
+                    company
                     }
                 }
             GRAPHQL

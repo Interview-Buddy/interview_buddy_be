@@ -7,7 +7,7 @@ module Types
     field :first_name, String, null: false
     field :last_name, String, null: false
     field :email, String, null: false
-    field :password, String, null: false
+    field :uuid, String, null: false
     field :pronouns, String
     field :display_name, String
     field :company, String
