@@ -14,11 +14,11 @@ module Types
     end
 
     field :user, Types::UserType, null: false do
-      argument :id, ID, required: true
+      argument :uuid, String, required: true
     end
 
-    def user(id:)
-      User.find(id.to_i)
+    def user(uuid:)
+      User.find_by(uuid: uuid)
     end
 
     field :meetings, [Types::MeetingType], null: false,
