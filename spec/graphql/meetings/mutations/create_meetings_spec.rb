@@ -62,4 +62,36 @@ RSpec.describe Mutations::CreateMeeting, type: :request do
     data = JSON.parse(response.body)['data']['createMeeting']['meeting']
     expect(data['title']).to eq("Interview with Joseph Downs")
   end
+
+  it 'will not create a meeting without all required fields' do
+    josh = User.create!(first_name: "Joseph", last_name: "Downs", pronouns: "he/him", user_type: "alum", company: "Tesla", email: "test@aol.com", uuid: "uulrnh")
+
+    post "/graphql", params: {
+      query: <<-GRAPHQL
+
+        mutation {
+          createMeeting(
+              input : {
+                  startTime: "11"
+                  endTime: null
+                  interviewType: 1
+                  userId: #{josh.id}
+                  date: "08/20/2023"
+                  studentId: null
+                  title: null
+              }
+          ) {
+              meeting{
+                  id
+                  title
+              }
+          }
+      }
+      GRAPHQL
+    }
+
+    expect(response).to have_http_status(:success)
+    expect(response.status).to be(200)
+    expect(JSON.parse(response.body)['data']).to be(nil)
+  end
 end
