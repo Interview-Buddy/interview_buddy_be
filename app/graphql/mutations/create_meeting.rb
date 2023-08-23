@@ -26,7 +26,6 @@ module Mutations
           errors: []
         }
       else
-        require 'pry'; binding.pry
         {
           meeting: nil,
           errors: meeting.errors.full_messages
