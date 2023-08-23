@@ -8,5 +8,6 @@ module Types
     # meetings
     field :create_meeting, mutation: Mutations::CreateMeeting
     field :update_meeting, mutation: Mutations::UpdateMeeting
+    field :delete_meeting, mutation: Mutations::DeleteMeeting
   end
 end
