@@ -7,10 +7,7 @@ module Mutations
       meeting = Meeting.find(id)
       if meeting.destroy
         { success: true }
-      else
-        { success: false }
       end
     end
   end
-  
 end
