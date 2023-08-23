@@ -178,4 +178,42 @@ RSpec.describe Mutations::CreateUser, type: :request do
 
         expect(data.count).to eq(1)
     end
+
+    it 'gives an error if input is incorrect' do
+        post '/graphql', params: {
+            query: <<-GRAPHQL
+            mutation {
+                createUser(
+                    input: {
+                        firstName: ""
+                        lastName: ""
+                        email: ""
+                        uuid: ""
+                        userType: 0
+                        pronouns: ""
+                        displayName: ""
+                        company: ""
+                    }
+                ) {
+                    user{
+                        firstName
+                        lastName
+                        email
+                        uuid
+                        userType
+                        pronouns
+                        displayName
+                        company
+                    }
+                }
+            }
+            GRAPHQL
+        }
+
+        json_response = JSON.parse(response.body)
+        error = json_response['errors']
+
+        expect(error).to eq([{"message"=>"Cannot return null for non-nullable field CreateUserPayload.user"}])
+    end
+
 end
