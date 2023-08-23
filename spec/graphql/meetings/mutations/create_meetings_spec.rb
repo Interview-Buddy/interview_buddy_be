@@ -13,7 +13,7 @@ RSpec.describe Mutations::CreateMeeting, type: :request do
                   endTime: "12"
                   interviewType: 1
                   userId: #{carl.id}
-                  date: "08/20/2023"
+                  date: "11/12/22"
                   studentId: null
                   title: null
               }
@@ -45,7 +45,7 @@ RSpec.describe Mutations::CreateMeeting, type: :request do
                   endTime: "12"
                   interviewType: 1
                   userId: #{josh.id}
-                  date: "08/20/2023"
+                  date: "11/12/22"
                   studentId: null
                   title: null
               }
@@ -68,30 +68,36 @@ RSpec.describe Mutations::CreateMeeting, type: :request do
 
     post "/graphql", params: {
       query: <<-GRAPHQL
-
         mutation {
           createMeeting(
               input : {
                   startTime: "11"
-                  endTime: null
+                  endTime: "12"
                   interviewType: 1
                   userId: #{josh.id}
-                  date: "08/20/2023"
+                  date: "07/19/1988"
                   studentId: null
                   title: null
               }
           ) {
               meeting{
                   id
+                  startTime
+                  endTime
                   title
+                  interviewType
+                  userId
+                  date
+                  studentId
               }
           }
       }
       GRAPHQL
     }
 
-    expect(response).to have_http_status(:success)
-    expect(response.status).to be(200)
-    expect(JSON.parse(response.body)['data']).to be(nil)
+    response_data = JSON.parse(response.body)['errors']
+    expect(response_data[0]['message']).to eq("Cannot return null for non-nullable field CreateMeetingPayload.meeting")
   end
+
+
 end

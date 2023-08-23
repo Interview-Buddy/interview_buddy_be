@@ -18,7 +18,7 @@ module Mutations
       else
         new_title = "Interview with #{alum.first_name} #{alum.last_name}"
       end
-      meeting = Meeting.new(start_time: start_time, end_time: end_time, interview_type: interview_type, 
+      meeting = Meeting.new(start_time: start_time, end_time: end_time, interview_type: interview_type,
         student_id: student_id, user_id: user_id, date: date, title: new_title)
       if meeting.save
         {
@@ -26,6 +26,7 @@ module Mutations
           errors: []
         }
       else
+        require 'pry'; binding.pry
         {
           meeting: nil,
           errors: meeting.errors.full_messages
