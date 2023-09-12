@@ -27,6 +27,10 @@
 For detailed examples of the endpoints with example responses click the specific query or mutation below.
 
 - Queries
+  - User Queries
+    - [Return all Users](./docs/graphql/queries.md)
+    - [Return a User by UUID](./docs/graphql/queries.md)
+  - Meeting Queries
 - Mutations
   - User Mutations
     - [createUser](./docs/graphql/mutations.md#user-m)
