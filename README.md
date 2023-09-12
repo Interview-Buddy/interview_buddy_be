@@ -26,12 +26,17 @@
 ## **GraphQL Endpoints**
 For detailed examples of the endpoints with example responses click the specific query or mutation below.
 
-- Queries
+- [Queries](./docs/graphql/queries.md)
   - User Queries
-    - [Return all Users](./docs/graphql/queries.md)
-    - [Return a User by UUID](./docs/graphql/queries.md)
+    - [Get all Users](./docs/graphql/queries.md)
+    - [Get a User by UUID](./docs/graphql/queries.md)
+    - [Get Users by Company](./docs/graphql/queries.md)
   - Meeting Queries
-- Mutations
+    - [Get all Meetings](./docs/graphql/queries.md)
+    - [Get a Meeting by UserID](./docs/graphql/queries.md)
+    - [Get a Meeting by Interview Type](./docs/graphql/queries.md)
+    - [Get Meetings by Date](./docs/graphql/queries.md)
+- [Mutations](./docs/graphql/mutations.md)
   - User Mutations
     - [createUser](./docs/graphql/mutations.md#user-m)
     - [updateUser](./docs/graphql/mutations.md#update-user)
