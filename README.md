@@ -10,5 +10,27 @@
   <a href="https://interviewbuddy-e788c667626e.herokuapp.com/"> <img src="./docs/imgs/Interviewbuddylogo.png" alt="logo" width="95%"/></a>
 </p>
 
+## **Table of Contents**
+- [Background and Description](#background-and-description)
+- [Schema](#schema)
+- [GraphQl Endpoints](#graphql-endpoints)
+  - [Queries](#queries)
+  - [Mutations](#mutations)
+- [Contributors](#contributors)
+
 ## **Schema**
-![plot](./docs/imgs/InterviewBuddySchema.png)
+<p align="center">
+  <img src="./docs/imgs/InterviewBuddySchema.png" width="95%">
+</p>
+
+## **GraphQL Endpoints**
+For detailed examples of the endpoints with example responses click the specific query or mutation below.
+
+- Queries
+- Mutations
+  - User Mutations
+    - [createUser](./docs/graphql/mutations.md#user-m)
+    - [updateUser](./docs/graphql/mutations.md#update-user)
+    - [deleteUser](./docs/graphql/mutations.md#delete-user)
+  - Meeting Mutations
+    -
