@@ -33,4 +33,6 @@ For detailed examples of the endpoints with example responses click the specific
     - [updateUser](./docs/graphql/mutations.md#update-user)
     - [deleteUser](./docs/graphql/mutations.md#delete-user)
   - Meeting Mutations
-    -
+    - [createMeeting](./docs/graphql/mutations.md#meeting-m)
+    - [updateMeeting](./docs/graphql/mutations.md#update-meeting)
+    - [deleteMeeting](./docs/graphql/mutations.md#delete-meeting)
