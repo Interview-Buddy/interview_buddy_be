@@ -109,7 +109,7 @@
 
 <br>
 
-<a id="get-users-by-company">***getUsersByCompany**</a><br>
+<a id="get-users-by-company">**getUsersByCompany**</a><br>
 *Will retrive all `Users` by their associated `Company` or will return an empty array if none.*
 
 - Example Query
