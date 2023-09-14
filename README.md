@@ -48,3 +48,13 @@ For detailed examples of the endpoints with example responses click the specific
     - [createMeeting](./docs/graphql/mutations.md#meeting-m)
     - [updateMeeting](./docs/graphql/mutations.md#update-meeting)
     - [deleteMeeting](./docs/graphql/mutations.md#delete-meeting)
+
+
+## **Contributors**
+
+<table>
+  <tr>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/93220002?s=400&u=9e2d707e1b8f15766ce240ab4272fa2fde076e87&v=4" width="100px;" alt=""/><br /><sub><b>Joseph Downs (he/him)</b></sub></a><br /><a href="https://www.linkedin.com/in/josdowns/" title ="Linked In"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a><br /><a href="https://github.com/josephdowns" title ="GitHub"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" width="115"></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/97638081?v=4" width="100px;" alt=""/><br /><sub><b>Colin Reinhart (he/him)</b></sub></a><br /><a href="https://www.linkedin.com/in/colin-reinhart-362083218/" title ="Linked In"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a><br /><a href="https://github.com/ColinReinhart" title ="GitHub"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" width="115"></td>
+  </tr>
+</table>
