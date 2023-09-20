@@ -223,7 +223,6 @@ RSpec.describe 'query meetings', type: :request do
     expect(response).to have_http_status(:success)
     data = JSON.parse(response.body)['data']['meetingsByStudentAndMonth']
     expect(data.count).to be(2)
-    binding.pry
     expect(data[0]["studentId"]).to eq(carl.id)
     expect(data[1]["interviewType"]).to eq("behavioral")
   end
