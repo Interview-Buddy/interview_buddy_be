@@ -59,5 +59,14 @@ module Types
       Meeting.where(date: date)
     end
 
+    field :meetings_by_user_and_month, [Types::MeetingType], null: false do
+      argument :user_id, ID, required:true
+      argument :month, String, required:true
+    end
+
+    def meetings_by_user_and_month(user_id:, month:)
+      Meeting.where(user_id: user_id).where('extract(month from date) = ?', month)
+    end
+
   end
 end
