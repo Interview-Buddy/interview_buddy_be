@@ -190,7 +190,7 @@ RSpec.describe 'query meetings', type: :request do
     expect(response).to have_http_status(:success)
     data = JSON.parse(response.body)['data']['meetingsByStudent']
     expect(data.count).to be(1)
-    expect(data[0]["student_id"]).to eq("#{josh.id}")
+    expect(data[0]["studentId"]).to eq(josh.id)
   end
 
   it 'can find a meeting by student and month' do
@@ -200,8 +200,8 @@ RSpec.describe 'query meetings', type: :request do
     meeting2 = Meeting.create!(start_time: "9", end_time: "6", interview_type: "both", student_id: "#{josh.id}", user_id: "#{carl.id}", date: "11/11/22")
     meeting3 = Meeting.create!(start_time: "4", end_time: "5", interview_type: "technical", student_id: "#{carl.id}", user_id: "#{josh.id}", date: "12/12/22")
     meeting4 = Meeting.create!(start_time: "4", end_time: "5", interview_type: "technical", student_id: "#{carl.id}", user_id: "#{josh.id}", date: "12/11/22")
-    meeting5 = Meeting.create!(start_time: "4", end_time: "5", interview_type: "technical", student_id: "#{carl.id}", user_id: "#{josh.id}", date: "01/12/23")
-    meeting6 = Meeting.create!(start_time: "4", end_time: "5", interview_type: "behavioral", student_id: "#{carl.id}", user_id: "#{josh.id}", date: "01/13/23")
+    meeting5 = Meeting.create!(start_time: "4", end_time: "5", interview_type: "technical", student_id: "#{carl.id}", user_id: "#{josh.id}", date: "2023/01/12")
+    meeting6 = Meeting.create!(start_time: "4", end_time: "5", interview_type: "behavioral", student_id: "#{carl.id}", user_id: "#{josh.id}", date: "2023/01/13")
 
     post "/graphql", params: {
       query: <<-GRAPHQL
@@ -223,8 +223,9 @@ RSpec.describe 'query meetings', type: :request do
     expect(response).to have_http_status(:success)
     data = JSON.parse(response.body)['data']['meetingsByStudentAndMonth']
     expect(data.count).to be(2)
-    expect(data[0]["student_id"]).to eq("#{carl.id}")
-    expect(data[1]["interview_type"]).to eq("behavioral")
+    binding.pry
+    expect(data[0]["studentId"]).to eq(carl.id)
+    expect(data[1]["interviewType"]).to eq("behavioral")
   end
 
 end
