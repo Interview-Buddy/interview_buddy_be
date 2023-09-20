@@ -60,12 +60,29 @@ module Types
     end
 
     field :meetings_by_user_and_month, [Types::MeetingType], null: false do
-      argument :user_id, ID, required:true
-      argument :month, String, required:true
+      argument :user_id, ID, required: true
+      argument :month, String, required: true
     end
 
     def meetings_by_user_and_month(user_id:, month:)
       Meeting.where(user_id: user_id).where('extract(month from date) = ?', month)
+    end
+
+    field :meetings_by_student, [Types::MeetingType], null: false do
+      argument :student_id, ID, required: true
+    end
+
+    def meetings_by_student(student_id:)
+      Meeting.where(student_id: student_id)
+    end
+
+    field :meetings_by_student_and_month, [Types::MeetingType], null: false do
+      argument :student_id, ID, required: true
+      argument :month, String, required: true
+    end
+
+    def meetings_by_student_and_month(student_id:, month:)
+      Meeting.where(student_id: student_id).where('extract(month from date) = ?', month)
     end
 
   end
