@@ -140,7 +140,7 @@ RSpec.describe 'query meetings', type: :request do
     post "/graphql", params: {
       query: <<-GRAPHQL
         {
-          meetingsByUserAndMonth(uuid: "uuuid", month: "11") {
+          meetingsByUserAndMonth(userId: #{carl.id}, month: "11") {
             id
             startTime
             endTime
@@ -156,8 +156,7 @@ RSpec.describe 'query meetings', type: :request do
 
     expect(response).to have_http_status(:success)
     data = JSON.parse(response.body)['data']['meetingsByUserAndMonth']
-
     expect(data.count).to be(1)
-
+    expect(data[0]["id"]).to eq("#{meeting2.id}")
   end
 end
