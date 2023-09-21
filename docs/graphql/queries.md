@@ -17,10 +17,10 @@
 
 ### <a id="user-q">User Queries</a><br>
 <a id="get-users">**getUsers**</a><br>
-*Will retrive all `Users` in the database.*
+*Will retrieve all `Users` in the database.*
 
 - Example Query
-```json
+```graphql
 {
   Users {
     id
@@ -82,10 +82,10 @@
 <br>
 
 <a id="get-user">**getUser**</a><br>
-*Will retrive a `User` in the database.*
+*Will retrieve a `User` in the database.*
 
 - Example Query
-```json
+```graphql
 {
   user(uuid: "qwerrt"){
     firstName
@@ -113,10 +113,10 @@
 <br>
 
 <a id="get-users-by-company">**getUsersByCompany**</a><br>
-*Will retrive all `Users` by their associated `Company` or will return an empty array if none.*
+*Will retrieve all `Users` by their associated `Company` or will return an empty array if none.*
 
 - Example Query
-```json
+```graphql
 {
   userByCompany(company: "Google") {
     firstName
@@ -161,10 +161,10 @@
 
 ### <a id="meeting-q">Meeting Queries</a><br>
 <a id="get-meetings">**getMeetings**</a><br>
-*Will retrive all `Meetings` from the database.*
+*Will retrieve all `Meetings` from the database.*
 
 - Example Query
-```json
+```graphql
 {
   meetings {
     id
@@ -212,11 +212,11 @@
 ```
 <br>
 
-<a id="get-meeting-user-id">getMeetingByUser</a><br>
-*Will retrive all `Meetings` associated with a `User ID`.*
+<a id="get-meeting-user-id">getMeetingsByUser</a><br>
+*Will retrieve all `Meetings` associated with a `User ID`.*
 
 - Example Query
-```json
+```graphql
 {
   meetingByUser(userId: 10) {
     date
@@ -247,11 +247,99 @@
 }
 ```
 
-<a id="get-meeting-interview-type">getMeetingByInterviewType</a><br>
-*Will retrive all `Meetings` with associated `Interview Type`.*
+<a id="get-meeting-user-month">getMeetingsByUserAndMonth</a><br>
+*Will retrieve all `Meetings` associated with `User` and limited by month. Month is a string 1 - 12.*
 
 - Example Query
+```graphql
+{
+  meetingsByUserAndMonth(userId: 5, month: "10") {
+    title
+    date
+    userId
+  }
+}
+```
+
+- Example Response
 ```json
+{
+  "data": {
+    "meetingsByUserAndMonth": [
+      {
+        "title": "Interview with Joseph Downs",
+        "date": "2023-10-08",
+        "userId": 5
+      }
+    ]
+  }
+}
+```
+
+<a id="get-meeting-student">getMeetingsByStudent</a><br>
+*Will retrieve all `Meetings` associated with `Student`.*
+
+- Example Query
+```graphql
+{
+  meetingsByStudent(studentId: 7) {
+    date
+    studentId
+    title
+    userId
+  }
+}
+```
+
+- Example Response
+```json
+{
+  "data": {
+    "meetingsByStudent": [
+      {
+        "date": "2023-12-08",
+        "studentId": 7,
+        "title": "Interview with Joseph Downs and Anthony Shellman",
+        "userId": 5
+      }
+    ]
+  }
+```
+
+<a id="get-meeeting-student-month">getMeetingsByStudentAndMonth</a><br>
+*Will retrieve all `Meetings` with associated `Student` and limited by month. Month is a string 1 - 12.*
+
+- Example Query
+```graphql
+{
+  meetingsByStudentAndMonth(studentId: 4, month: "9") {
+    date
+    title
+    studentId
+  }
+}
+```
+
+- Example Response
+```json
+{
+  "data": {
+    "meetingsByStudentAndMonth": [
+      {
+        "date": "2023-09-08",
+        "title": "Interview with Joseph Downs and Colin Reinhart",
+        "studentId": 4
+      }
+    ]
+  }
+}
+```
+
+<a id="get-meeting-interview-type">getMeetingsByInterviewType</a><br>
+*Will retrieve all `Meetings` with associated `Interview Type`.*
+
+- Example Query
+```graphql
 {
   meetingByInterviewType(interviewType: "behavioral") {
     title
@@ -282,10 +370,10 @@
 ```
 
 <a id="get-meetings-date">getMeetingsByDate</a><br>
-*Will retrive all `Meetings` associated with a `Date`. Takes yyyy/mm/dd format.*
+*Will retrieve all `Meetings` associated with a `Date`. Takes yyyy/mm/dd format.*
 
 - Example Query
-```json
+```graphql
 {
   meetingsByDate(date: "2023/11/08"){
     title
