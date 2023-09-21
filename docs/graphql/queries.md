@@ -7,8 +7,11 @@
 
 ### [Meeting Queries](#meeting-q)
 - [getMeetings](#get-meetings)
-- [getAMeetingByUser](#get-meeting-user-id)
-- [getAMeetingByInterviewType](#get-meeting-interview-type)
+- [getMeetingsByUser](#get-meeting-user-id)
+- [getMeetingsByUserAndMonth](#get-meeting-user-month)
+- [getMeetingsByStudent](#get-meeting-student)
+- [getMeetingsByStudentandMonth](#get-meeting-student-month)
+- [getMeetingsByInterviewType](#get-meeting-interview-type)
 - [getMeetingsByDate](#get-meetings-date)
 ---
 
