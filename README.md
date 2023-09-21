@@ -23,7 +23,7 @@ This application is being created to help pair job seekers with industry profess
 
 ## **Schema**
 <p align="center">
-  <img src="./docs/imgs/InterviewBuddySchema.png" width="95%">
+  <img src="./docs/imgs/interviewbuddyschema.png" width="95%">
 </p>
 
 ## **GraphQL Endpoints**
