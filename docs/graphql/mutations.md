@@ -15,8 +15,9 @@
 ### <a id="user-m">User Mutations</a><br>
 <a id="create-user">**createUser**</a><br>
 *Used during profile creation. Will create a new `User` in the database*
+
 * Example Mutation
-```json
+```graphql
 mutation {
   createUser(
     input: {
@@ -70,8 +71,9 @@ mutation {
 
 <a id="update-user">**updateUser**</a><br>
 *Will allow a `User` to edit their specific attributes in the database*
+
 * Example Mutation
-```json
+```graphql
 mutation {
   updateUser(
     input: {
@@ -107,8 +109,9 @@ mutation {
 
 <a id="delete-user">**deleteUser**</a><br>
 *Will delete a `User` and all `Meetings` associated with the `User` in the database*
+
 * Example Mutation
-```json
+```graphql
 mutation {
   deleteUser(
     input: {
@@ -141,8 +144,9 @@ mutation {
 <a id="create-meeting">**createMeeting**</a>
 <br>
 *Used during `Meeting` creation. Will create a `new meeting` attached to a `User` in the database*
+
 * Example Mutation
-```json
+```graphql
 mutation {
   createMeeting(
     input: {
@@ -194,8 +198,9 @@ mutation {
 
 <a id="update-meeting">**updateMeeting**</a> <br>
 *Will allow a `User` to edit a specific meeting in the database*
+
 * Example Mutation
-```json
+```graphql
 mutation {
   updateMeeting(
     input: {
@@ -244,8 +249,9 @@ mutation {
 
 <a id="delete-meeting">**deleteMeeting**</a><br>
 *Will delete an `meeting` in the database*
+
 * Example Mutation
-```json
+```graphql
 mutation {
   deleteMeeting(
     input: {

@@ -23,7 +23,7 @@ This application is being created to help pair job seekers with industry profess
 
 ## **Schema**
 <p align="center">
-  <img src="./docs/imgs/InterviewBuddySchema.png" width="95%">
+  <img src="./docs/imgs/interviewbuddyschema.png" width="95%">
 </p>
 
 ## **GraphQL Endpoints**
@@ -36,8 +36,11 @@ For detailed examples of the endpoints with example responses click the specific
     - [Get Users by Company](./docs/graphql/queries.md#get-users-by-company)
   - [Meeting Queries](./docs/graphql/queries.md#meeting-q)
     - [Get all Meetings](./docs/graphql/queries.md#get-meetings)
-    - [Get a Meeting by UserID](./docs/graphql/queries.md#get-meeting-user-id)
-    - [Get a Meeting by Interview Type](./docs/graphql/queries.md#get-meeting-interview-type)
+    - [Get Meetings by User](./docs/graphql/queries.md#get-meeting-user-id)
+    - [Get Meetings by User and Month](./docs/graphql/queries.md#get-meeting-user-month)
+    - [Get Meetings by Student](./docs/graphql/queries.md#get-meeting-student)
+    - [Get Meetings by StudentID and Month](./docs/graphql/queries.md#get-meeting-student-month)
+    - [Get Meetings by Interview Type](./docs/graphql/queries.md#get-meeting-interview-type)
     - [Get Meetings by Date](./docs/graphql/queries.md#get-meetings-date)
 - [Mutations](./docs/graphql/mutations.md)
   - [User Mutations](/docs/graphql/mutations.md#user-m)
