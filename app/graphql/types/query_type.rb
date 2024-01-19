@@ -85,5 +85,11 @@ module Types
       Meeting.where(student_id: student_id).where('extract(month from date) = ?', month)
     end
 
+     field :available_meetings, [Types::MeetingType], null: false,
+      description: "Return all available meetings"
+    def available_meetings
+      Meeting.where(student_id: nil)
+    end
+
   end
 end
